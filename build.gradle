@@ -22,3 +22,13 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+// add the following code snippet at the end of build.gradle file so
+// that gradle don’t generate plain jar. Plain jar may cause class not found exception.
+// Also, set Main-Class attribute to your spring boot entry file it will solve Can’t
+// execute jar- file: “no main manifest attribute” error.
+jar {
+	enabled = false
+	manifest {
+		attributes('Main-Class': 'com.example.demo.DemoApplication')
+	}
+}
